@@ -5,7 +5,11 @@ import java.util.UUID
 /**
   * Created by Led on 22/04/2017.
   */
-object DictionaryMock {
+class DictionaryMock {
   val uuid = UUID.randomUUID.toString
   val talon = Word(uuid,"Talon",WordType.Verb,List("Tatalon ako sa building"))
+
+  def getWord(id:String) = {
+    talon
+  }
 }

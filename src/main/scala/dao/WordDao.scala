@@ -10,6 +10,7 @@ import com.ph.athena.model.WordType
   */
 class WordDao {
   def getWordbyId(id: String): Word = {
-    DictionaryMock.talon
+    //TODO Add communication to database here
+    null
   }
 }

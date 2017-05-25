@@ -1,15 +1,15 @@
 package com.ph.athena
-import com.ph.athena.http.Route
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
+import com.ph.athena.http.resources.WordResources
 //import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
   * Created by Led on 22/04/2017.
   */
-object Main extends App with Route {
-  print("************ START UP *************")
+object Main extends App with RestInterface {
+  println("************ START UP *************")
 
   implicit val system = ActorSystem("system")
 
@@ -17,10 +17,10 @@ object Main extends App with Route {
   implicit val ec = system.dispatcher
 //  implicit val executionContext = system.dispatcher
 
-  val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 
-  bindingFuture
-    .flatMap(_.unbind()) // trigger unbinding from the port
-    .onComplete(_ => system.terminate()) // and shutdown when done
+  Http().bindAndHandle(handler = routes, interface = "localhost", port = 8080) map { binding =>
+    println(s"REST interface bound to ${binding.localAddress}") } recover { case ex =>
+    println(s"REST interface could not bind to localhst:8080", ex.getMessage)
+  }
 
 }
