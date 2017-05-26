@@ -2,8 +2,6 @@ package com.ph.athena
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
-import com.ph.athena.http.resources.WordResources
-//import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
   * Created by Led on 22/04/2017.
@@ -15,7 +13,7 @@ object Main extends App with RestInterface {
 
   implicit val materializer = ActorMaterializer()
   implicit val ec = system.dispatcher
-//  implicit val executionContext = system.dispatcher
+//  implicit val executionContext = s ystem.dispatcher
 
 
   Http().bindAndHandle(handler = routes, interface = "localhost", port = 8080) map { binding =>

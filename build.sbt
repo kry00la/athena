@@ -6,13 +6,14 @@ resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/re
   Resolver.bintrayRepo("hseeberger", "maven"))
 
 lazy val AKKA_VERSION = "2.4.17"
-lazy val AKKA_HTTP_VERSION = "10.0.5"
-lazy val JSON4S_VERSION = "3.5.1"
+lazy val AKKA_HTTP_VERSION = "10.0.6"
+lazy val JSON4S_VERSION = "3.5.2"
 
 lazy val json4s = Seq(
   libraryDependencies ++= Seq(
-    "org.json4s"        %% "json4s-native"   % "3.5.1",
-    "org.json4s"        %% "json4s-ext"      % "3.5.1"
+    "org.json4s"        %% "json4s-native"   % JSON4S_VERSION,
+    "org.json4s"        %% "json4s-jackson"      % JSON4S_VERSION,
+    "org.json4s"        %% "json4s-core"      % JSON4S_VERSION
   )
 )
 
